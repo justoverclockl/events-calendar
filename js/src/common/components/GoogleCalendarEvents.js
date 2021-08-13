@@ -11,34 +11,28 @@
 import Widget from 'flarum/extensions/afrux-forum-widgets-core/common/components/Widget';
 
 export default class GoogleCalendarEvents extends Widget {
-  oncreate(vnode) {
+    oncreate(vnode) {}
 
+    className() {
+        return 'GoogleCalEvents';
     }
 
-  className() {
-    return 'GoogleCalEvents';
-  }
+    icon() {
+        // Widget icon.
+        return 'far fa-calendar-check';
+    }
 
-  icon() {
-    // Widget icon.
-    return 'far fa-calendar-check';
-  }
+    title() {
+        // Widget title.
+        return app.translator.trans('justoverclock-last-tweet.forum.widget-title');
+    }
 
-  title() {
-    // Widget title.
-    return app.translator.trans('justoverclock-last-tweet.forum.widget-title');
-  }
-
-  content() {
-    return (
-      <div>
-        <ul id="events-upcoming"></ul>
-        <ul id="events-past"></ul>
-      </div>
-    )
-  }
+    content() {
+        return (
+            <div>
+                <ul id="events-upcoming"></ul>
+                <ul id="events-past"></ul>
+            </div>
+        );
+    }
 }
-
-
-
-

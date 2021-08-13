@@ -181,63 +181,63 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
 
 
     var eventsArray = [{
-      id: "New Flarum Extension",
-      date: "2021/08/23",
-      content: "is the extension finished?",
-      source: "#"
+      id: 'New Flarum Extension',
+      date: '2021/08/23',
+      content: 'is the extension finished?',
+      source: '#'
     }];
     var today = new Date(),
         currentMonth = today.getMonth(),
         currentYear = today.getFullYear(); // array for weeks
 
-    var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // array for month
+    var weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; // array for month
 
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; // structure
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']; // structure
 
-    var structureCalendar = createElement("div", window.root, {
-      id: "structureCalendar"
+    var structureCalendar = createElement('div', window.root, {
+      id: 'structureCalendar'
     }),
         // header
-    calendarHeader = createElement("header", structureCalendar, {}),
+    calendarHeader = createElement('header', structureCalendar, {}),
         // header columns left center and right
-    headerLeft = createElement("div", calendarHeader, {
-      className: "left"
+    headerLeft = createElement('div', calendarHeader, {
+      className: 'left'
     }),
-        headerCenter = createElement("div", calendarHeader, {
-      className: "center"
+        headerCenter = createElement('div', calendarHeader, {
+      className: 'center'
     }),
-        headerRight = createElement("div", calendarHeader, {
-      className: "right"
+        headerRight = createElement('div', calendarHeader, {
+      className: 'right'
     }),
         // inside left column
-    buttonPrev = createElement("button", headerLeft, {
-      textContent: "Previous"
+    buttonPrev = createElement('button', headerLeft, {
+      textContent: 'Previous'
     }),
-        buttonNext = createElement("button", headerLeft, {
-      textContent: "Next"
+        buttonNext = createElement('button', headerLeft, {
+      textContent: 'Next'
     }),
-        centerTitle = createElement("h1", headerCenter, {
-      textContent: months[currentMonth] + " " + currentYear
+        centerTitle = createElement('h1', headerCenter, {
+      textContent: months[currentMonth] + ' ' + currentYear
     }),
         // calendar body
-    calendarBody = createElement("div", structureCalendar, {
-      id: "calendar"
+    calendarBody = createElement('div', structureCalendar, {
+      id: 'calendar'
     }),
-        weekdayBody = createElement("ul", calendarBody, {
-      id: "weekdays"
+        weekdayBody = createElement('ul', calendarBody, {
+      id: 'weekdays'
     }),
-        daysBody = createElement("ul", calendarBody, {
-      id: "days"
+        daysBody = createElement('ul', calendarBody, {
+      id: 'days'
     }); // init calendar
 
     showCalendar(currentMonth, currentYear); // map week days
 
     weekdays.map(function (item, i) {
       return (// change to monday
-        today.getDay() - 0 == i ? createElement("li", weekdayBody, {
-          className: "today",
+        today.getDay() - 0 == i ? createElement('li', weekdayBody, {
+          className: 'today',
           textContent: item
-        }) : createElement("li", weekdayBody, {
+        }) : createElement('li', weekdayBody, {
           textContent: item
         })
       );
@@ -256,9 +256,9 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
       // first day - 1
       var firstDay = new Date(year, month).getDay() - 1; // clear preview content
 
-      daysBody.textContent = ""; // filing data about month and in the page via DOM.
+      daysBody.textContent = ''; // filing data about month and in the page via DOM.
 
-      centerTitle.textContent = months[month] + " " + year; // creating all cells
+      centerTitle.textContent = months[month] + ' ' + year; // creating all cells
 
       var date = 1;
 
@@ -266,30 +266,30 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
         //creating individual cells, filing them up with data.
         for (var j = 0; j < 7; j++) {
           if (i === 0 && j < firstDay) {
-            createElement("li", daysBody, {
-              textContent: ""
+            createElement('li', daysBody, {
+              textContent: ''
             });
           } else if (date > daysInMonth(month, year)) {
             break;
           } else {
-            var li = createElement("li", daysBody, {}),
-                info = createElement("div", li, {
-              className: "info",
+            var li = createElement('li', daysBody, {}),
+                info = createElement('div', li, {
+              className: 'info',
               textContent: weekdays[j]
             }),
-                div = createElement("div", li, {
-              className: "date",
+                div = createElement('div', li, {
+              className: 'date',
               textContent: date
             }); // ----------------------------
             // ----- view events
 
-            if (typeof eventsArray !== "undefined") {
+            if (typeof eventsArray !== 'undefined') {
               viewEvents(eventsArray, li, [year, month, date]);
             } // ----------------------------
 
 
             if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-              li.className = "today";
+              li.className = 'today';
             }
 
             date++;
@@ -301,18 +301,18 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
 
     function viewEvents(data, where, args) {
       return data && data.map(function (item) {
-        var date = item.date.split("/"),
+        var date = item.date.split('/'),
             year = parseInt(date[0]),
             month = parseInt(date[1]) - 1,
             day = parseInt(date[2]);
 
         if (year === args[0] && month === args[1] && day === args[2]) {
-          var event = createElement("div", where, {
-            className: "ev",
+          var event = createElement('div', where, {
+            className: 'ev',
             id: item.id
           }),
-              eventDesc = createElement("div", event, {
-            className: "ev-desc"
+              eventDesc = createElement('div', event, {
+            className: 'ev-desc'
           });
           eventDesc.innerHTML = "<div class=\"eventFlarumCalendar\">" + item.content + "</div>";
 
