@@ -163,13 +163,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_common_utils_extractText__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_common_utils_extractText__WEBPACK_IMPORTED_MODULE_4__);
 
 
-function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
 
 
 
@@ -189,8 +182,9 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
 
     var eventsArray = [{
       id: 'My Name',
-      date: '2021/08/23',
-      content: 'my events description'
+      date: '2021-08-23',
+      content: 'my events description',
+      source: '#'
     }];
     var today = new Date(),
         currentMonth = today.getMonth(),
@@ -307,7 +301,7 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
 
     function viewEvents(data, where, args) {
       return data && data.map(function (item) {
-        var date = item.date.split('/'),
+        var date = item.date.split('-'),
             year = parseInt(date[0]),
             month = parseInt(date[1]) - 1,
             day = parseInt(date[2]);
@@ -358,20 +352,9 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
       }
       where.appendChild(d);
       return d;
-    }
-    /* Section that push new events into the object */
+    } /////////////////////////////////////////////////////////////
+    // NEW LINES
 
-
-    var wrp = document.getElementById('calendar-events');
-
-    function addInfoInCalendar() {
-      wrp.innerHTML = '';
-
-      for (var _iterator = _createForOfIteratorHelperLoose(eventsArray), _step; !(_step = _iterator()).done;) {
-        var iterator = _step.value;
-        wrp.innerHTML += '<div>' + iterator.id + ' ' + iterator.date + ' ' + iterator.content + '</div>';
-      }
-    }
 
     var formWrp = document.getElementById('myForm');
     var f_id = myForm.querySelectorAll('[name="id"]')[0];
@@ -386,10 +369,8 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
         date: f_date.value,
         content: f_content.value
       });
-      addInfoInCalendar();
+      showCalendar(currentMonth, currentYear);
     }
-
-    console.log(eventsArray);
   };
 
   _proto.content = function content() {

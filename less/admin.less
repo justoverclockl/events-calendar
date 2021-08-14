@@ -1,6 +1,7 @@
-.eventFlarumCalendar{
+.eventFlarumCalendar {
   cursor: help;
 }
+
 #structureCalendar header {
   height: 4rem;
   line-height: 4rem;
@@ -8,15 +9,24 @@
   background: #ff6200;
   color: #fdfdfd;
 }
-#structureCalendar header .left, #structureCalendar header .center, #structureCalendar header .right {
+
+#structureCalendar header .left,
+#structureCalendar header .center,
+#structureCalendar header .right {
   width: 100%;
   float: left;
 }
-#structureCalendar header .left h1, #structureCalendar header .center h1, #structureCalendar header .right h1 {
+
+#structureCalendar header .left h1,
+#structureCalendar header .center h1,
+#structureCalendar header .right h1 {
   line-height: 1.8rem;
   font-size: 25px;
 }
-#structureCalendar header .left button, #structureCalendar header .center button, #structureCalendar header .right button {
+
+#structureCalendar header .left button,
+#structureCalendar header .center button,
+#structureCalendar header .right button {
   background-color: #ff6200;
   border: 1px solid #ff6200;
   color: #fdfdfd;
@@ -29,40 +39,47 @@
   cursor: pointer;
   transition: all 500ms ease;
 }
+
 .center {
   background: #ff6200;
 }
-#structureCalendar header .left button:hover, #structureCalendar header .center button:hover, #structureCalendar header .right button:hover {
+
+#structureCalendar header .left button:hover,
+#structureCalendar header .center button:hover,
+#structureCalendar header .right button:hover {
   background-color: #ff6200;
   border-color: #ff6200;
   color: #fdfdfd;
   transition: all 500ms ease;
 }
 
-#calendar #days, #calendar #weekdays {
+#calendar #days,
+#calendar #weekdays {
   list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
 }
-#calendar #days li, #calendar #weekdays li {
+
+#calendar #days li,
+#calendar #weekdays li {
   display: block;
   float: left;
   width: calc(100% / 7);
   padding: 5px;
   box-sizing: border-box;
 }
+
 #calendar #weekdays {
   height: 40px;
   background: #ff6200;
   border-bottom: 2px solid #ff6200;
 }
+
 .contentcalflarum {
   display: flow-root;
-  width: 90%;
-  margin: 0 auto;
-  margin-top: 10px;
 }
+
 #calendar #weekdays li {
   text-align: center;
   text-transform: uppercase;
@@ -73,10 +90,12 @@
   font-size: 13px;
   font-weight: bold;
 }
+
 #calendar #weekdays .today {
   background: #ff6200;
   color: #fdfdfd;
 }
+
 #calendar #days li {
   height: 150px;
   overflow-y: auto;
@@ -85,15 +104,18 @@
   color: #ff6200;
   border: 1px solid #f0f0f0;
 }
+
 #calendar #days li:hover {
   background: #f0f0f0;
 }
+
 #calendar #days li .info {
   position: absolute;
   bottom: 2px;
   right: 2px;
   opacity: 0;
 }
+
 #calendar #days li .date {
   text-align: center;
   margin-bottom: 5px;
@@ -107,12 +129,15 @@
   font-size: 12px;
   font-weight: bold;
 }
+
 #calendar #days .today {
   background: #f2f2fe;
 }
+
 #calendar #days .today:hover {
   background: #c0c4fd;
 }
+
 .ev {
   display: block;
   background: #f2f2fe;
@@ -121,35 +146,46 @@
   margin: 5px auto;
   transition: background 500ms ease;
 }
+
 .ev:hover {
   background: #777ffa;
   transition: background 500ms ease;
 }
+
 .ev-desc {
   padding: 0.2rem 0.5rem;
 }
+
 .ev-desc a {
   text-decoration: none;
   color: #ff6200;
   transition: color 500ms ease;
 }
+
 .ev:hover .ev-desc a {
   color: #a8adfc;
   transition: color 500ms ease;
 }
+
 @media (max-width: 768px) {
   #structureCalendar header {
     height: auto;
     text-align: center;
     padding: 1rem;
   }
-  #structureCalendar header .left, #structureCalendar header .center, #structureCalendar header .right {
+
+  #structureCalendar header .left,
+  #structureCalendar header .center,
+  #structureCalendar header .right {
     width: 100%;
     float: none;
   }
-  #calendar #weekdays, #calendar .null {
+
+  #calendar #weekdays,
+  #calendar .null {
     display: none;
   }
+
   #calendar #days li {
     height: auto !important;
     border: 1px solid #f0f0f0;
@@ -157,12 +193,20 @@
     padding: 10px;
     margin-bottom: -1px;
   }
+
   #calendar #days li .info {
     left: 2px;
     opacity: 1;
     color: #d9dbfe;
   }
+
   #calendar .date {
     float: none;
   }
+}
+div#myForm {
+  display: inline-grid;
+  /* margin: 0 auto; */
+  margin-left: 12px;
+  margin-top: 20px;
 }
