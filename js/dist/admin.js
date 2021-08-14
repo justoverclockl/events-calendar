@@ -183,8 +183,7 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
     var eventsArray = [{
       id: 'My Name',
       date: '2021-08-23',
-      content: 'my events description',
-      source: '#'
+      content: 'my events description'
     }];
     var today = new Date(),
         currentMonth = today.getMonth(),
@@ -352,8 +351,7 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
       }
       where.appendChild(d);
       return d;
-    } /////////////////////////////////////////////////////////////
-    // NEW LINES
+    } // --- create the forms that can push new items into object
 
 
     var formWrp = document.getElementById('myForm');
