@@ -24,7 +24,7 @@ export default class GoogleCalendarEvents extends Widget {
 
     title() {
         // Widget title.
-        return app.translator.trans('justoverclock-last-tweet.forum.widget-title');
+        return app.translator.trans('justoverclock-events-calendar.forum.widget-title');
     }
 
     content() {

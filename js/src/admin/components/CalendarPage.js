@@ -9,10 +9,9 @@ export default class CalendarPage extends ExtensionPage {
         // data for events
         let eventsArray = [
             {
-                id: 'New Flarum Extension',
+                id: 'My Name',
                 date: '2021/08/23',
-                content: 'is the extension finished?',
-                source: '#',
+                content: 'my events description'
             },
         ];
 
@@ -144,11 +143,44 @@ export default class CalendarPage extends ExtensionPage {
             where.appendChild(d);
             return d;
         }
+     /* Section that push new events into the object */
+      let wrp = document.getElementById('calendar-events');
+      function addInfoInCalendar() {
+        wrp.innerHTML = '';
+        for (const iterator of eventsArray) {
+          wrp.innerHTML += '<div>' + iterator.id + ' ' + iterator.date + ' ' + iterator.content + '</div>';
+        }
+      }
+      let formWrp = document.getElementById('myForm');
+      let f_id = myForm.querySelectorAll('[name="id"]')[0];
+      let f_date = myForm.querySelectorAll('[name="date"]')[0];
+      let f_content = myForm.querySelectorAll('[name="content"]')[0];
+      let f_button = myForm.querySelector('button');
+
+      f_button.addEventListener('click', addNewInfo);
+
+      function addNewInfo() {
+        eventsArray.push({
+          id: f_id.value,
+          date: f_date.value,
+          content: f_content.value
+        });
+
+        addInfoInCalendar();
+      }
+  console.log(eventsArray)
     }
     content() {
         return (
             <div class="contentcalflarum">
                 <div class="calforflarum" id="root"></div>
+              <div id="myForm">
+                <input type="text" name="id"></input>
+                <input type="date" name="date"></input>
+                <input type="text" name="content"></input>
+                 <button>Send</button>
+                <div id="calendar-events"></div>
+              </div>
             </div>
         );
     }

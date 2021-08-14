@@ -163,6 +163,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flarum_common_utils_extractText__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(flarum_common_utils_extractText__WEBPACK_IMPORTED_MODULE_4__);
 
 
+function _createForOfIteratorHelperLoose(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (it) return (it = it.call(o)).next.bind(it); if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; return function () { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
 
 
 
@@ -181,10 +188,9 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
 
 
     var eventsArray = [{
-      id: 'New Flarum Extension',
+      id: 'My Name',
       date: '2021/08/23',
-      content: 'is the extension finished?',
-      source: '#'
+      content: 'my events description'
     }];
     var today = new Date(),
         currentMonth = today.getMonth(),
@@ -353,6 +359,37 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
       where.appendChild(d);
       return d;
     }
+    /* Section that push new events into the object */
+
+
+    var wrp = document.getElementById('calendar-events');
+
+    function addInfoInCalendar() {
+      wrp.innerHTML = '';
+
+      for (var _iterator = _createForOfIteratorHelperLoose(eventsArray), _step; !(_step = _iterator()).done;) {
+        var iterator = _step.value;
+        wrp.innerHTML += '<div>' + iterator.id + ' ' + iterator.date + ' ' + iterator.content + '</div>';
+      }
+    }
+
+    var formWrp = document.getElementById('myForm');
+    var f_id = myForm.querySelectorAll('[name="id"]')[0];
+    var f_date = myForm.querySelectorAll('[name="date"]')[0];
+    var f_content = myForm.querySelectorAll('[name="content"]')[0];
+    var f_button = myForm.querySelector('button');
+    f_button.addEventListener('click', addNewInfo);
+
+    function addNewInfo() {
+      eventsArray.push({
+        id: f_id.value,
+        date: f_date.value,
+        content: f_content.value
+      });
+      addInfoInCalendar();
+    }
+
+    console.log(eventsArray);
   };
 
   _proto.content = function content() {
@@ -361,7 +398,20 @@ var CalendarPage = /*#__PURE__*/function (_ExtensionPage) {
     }, m("div", {
       "class": "calforflarum",
       id: "root"
-    }));
+    }), m("div", {
+      id: "myForm"
+    }, m("input", {
+      type: "text",
+      name: "id"
+    }), m("input", {
+      type: "date",
+      name: "date"
+    }), m("input", {
+      type: "text",
+      name: "content"
+    }), m("button", null, "Send"), m("div", {
+      id: "calendar-events"
+    })));
   };
 
   return CalendarPage;
@@ -442,7 +492,7 @@ var GoogleCalendarEvents = /*#__PURE__*/function (_Widget) {
 
   _proto.title = function title() {
     // Widget title.
-    return app.translator.trans('justoverclock-last-tweet.forum.widget-title');
+    return app.translator.trans('justoverclock-events-calendar.forum.widget-title');
   };
 
   _proto.content = function content() {

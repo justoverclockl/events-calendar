@@ -190,7 +190,7 @@ var GoogleCalendarEvents = /*#__PURE__*/function (_Widget) {
 
   _proto.title = function title() {
     // Widget title.
-    return app.translator.trans('justoverclock-last-tweet.forum.widget-title');
+    return app.translator.trans('justoverclock-events-calendar.forum.widget-title');
   };
 
   _proto.content = function content() {
